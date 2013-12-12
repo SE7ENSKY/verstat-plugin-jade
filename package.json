@@ -1,0 +1,7 @@
+{
+  "name": "verstat-plugin-jade",
+  "version": "1.0.0",
+  "dependencies": {
+    "jade": "~0.35.0"
+  }
+}
