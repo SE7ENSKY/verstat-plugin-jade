@@ -8,9 +8,19 @@ module.exports = (next) ->
 		preprocess: (file, done) =>
 			try
 				if file.processor is 'jade'
-					file.fn = jade.compile file.source,
+					source = file.source.replace ///\t///g, '  '
+					file.fn = jade.compile source,
 						filename: file.srcFilePath
 						pretty: off
+						readFileSync: (filename) =>
+							found = @queryFile srcFilePath: filename
+							if found
+								@depends file, found
+								return found.source
+							else
+								err = new Error "file #{filename} not found"
+								err.code = 'ENOENT'
+								throw err
 					@modified file
 					done()
 			catch err

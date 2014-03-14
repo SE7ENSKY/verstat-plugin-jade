@@ -1,7 +1,7 @@
 {
   "name": "verstat-plugin-jade",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "dependencies": {
-    "jade": "~0.35.0"
+    "jade": "git://github.com/Se7enSky/jade.git"
   }
 }
