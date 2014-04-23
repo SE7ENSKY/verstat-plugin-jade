@@ -13,6 +13,8 @@ module.exports = (next) ->
 						filename: file.srcFilePath
 						pretty: off
 						readFileSync: (filename) =>
+							winfix = (s) -> s.split('\\').join('/')
+							filename = winfix filename
 							found = @queryFile srcFilePath: filename
 							if found
 								@depends file, found
